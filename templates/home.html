@@ -1,0 +1,129 @@
+<!doctype html>
+
+<html>
+
+    <head>
+        <title>Workout Log</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="../static/home.js"></script>
+
+        <style>
+            body{
+                text-align: center;
+                align-items: center;
+                background-color: lightslategray;
+                font-family: "Arial Rounded MT Bold";
+            }
+            button{
+                border-style: ridge;
+                border-width: 5px;
+                border-radius: 10px;
+            }
+            table{
+                border-style: solid;
+                border-width: 5px;
+                border-radius: 10px;
+                margin-right: auto;
+                margin-left: auto;
+            }
+            .listOfEx {
+                font-size: 12px;
+            }
+            .editCreateButtons {
+                font-size: 20px;
+                border-style: ridge;
+                border-width: 3px;
+                border-radius: 10px;
+            }
+            #editAndCreateBox {
+                border-style: outset;
+                border-width: 10px;
+                border-color: mediumpurple;
+            }
+
+        </style>
+    </head>
+
+
+    <body onload="pageLoaded()">
+
+        <form action="/home" method="get">
+            <h1> Hello, {{ usr }}!</h1>
+        </form>
+        <div id="editAndCreateBox">
+
+            <br><br>
+            <input type="button" value="Edit Workouts" onclick="myWorkoutsClicked()" class="editCreateButtons">
+            <input type="button" id="createWorkout" value="Create New Workout" onclick="unhideWoNamer()" class="editCreateButtons">
+            <br><br><br>
+
+
+            <div id="workoutNamer" hidden="true">
+                <label>
+                    What do you want to call this workout?
+                    <br>
+                    <input type="text" id="woName">
+                    <br>
+                    <input type="submit" onclick="setWoName()">
+                </label>
+                <br>
+                <p id="notEnoughCharinWoNameWarning" hidden="true">Name must have at least 1 character.</p>
+            </div>
+
+            <div id="workoutCreator" hidden="true">
+                <h3 id="woNameLabel"></h3>
+                <br>
+                <label>
+                    Exercise:
+                    <input type="text" id="exName">
+                    <br>
+                    Sets:
+                    <input type="number" id="setsNum">
+                    <br> <br>
+                    <input type="button" onclick="addEx()" value="Add">
+                </label>
+                <br><br>
+
+                <table id="woTable">
+                    <tr>
+                        <th>Exercise</th>
+                        <th>Sets</th>
+                        <th></th>
+                    </tr>
+                </table>
+                <br>
+                <button onclick="undoAddEx()">Undo</button>
+                <br><br>
+                <button onclick="completeWoCreation()">Done</button>
+                <p id="noExercises" hidden="true">Must add at least 1 exercise</p>
+            </div>
+
+            </form>
+
+            <div id="currentWorkoutsList" hidden="true">
+                <p id="noWorkoutsCurrently" hidden="true">You currently have no workouts</p>
+                <table id="currentWorkoutsListTable"></table>
+                <div id="deleteConfirmation" hidden="true">
+                    <p>Are you Sure You want to Delete ___?</p>
+                    <button id="deleteConfirmButton">Delete</button>
+                    <button onclick="document.getElementById('deleteConfirmation').hidden = true">Cancel</button>
+                </div>
+            </div>
+            <br><br><br><br>
+        </div>
+        <br><br><br>
+        <div>
+            <h2 style="display: inline">Current Workouts</h2>
+            <button onclick="pageLoaded()" style="display: inline">Reload</button>
+            <br><br>
+            <div id="currentWorkouts">
+            </div>
+        </div>
+        <br><br><br><br>
+        <a href="/logout">Log Out</a>
+
+
+
+    </body>
+
+</html>
