@@ -221,12 +221,12 @@ function loadCurrentWorkouts(arg) {
                 data: JSON.stringify(key),
                 success: function(response) {
                     console.log(response)
+                    window.location.href = '/workout'
                 },
                 error: function(error) {
                     console.log(error);
                 }
             });
-            window.location.href = '/workout'
         }
         div.appendChild(button)
         box.appendChild(div)

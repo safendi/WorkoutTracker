@@ -27,7 +27,6 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS workouts (
 
 
 
-
 @app.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -156,7 +155,6 @@ def removeWo():
 def workoutSelected():
     if request.method == 'POST':
         data = request.get_json()
-        currWo = data
         session['currentWorkout'] = data
         print(session['currentWorkout'])
         return session['currentWorkout']
@@ -171,7 +169,7 @@ def workoutSelected():
             retData[currentWorkout] = data
             return json.dumps(retData)
         else:
-            return session['usr'] + ": " + session['currentWorkout']
+            return "None"
 
 
 
