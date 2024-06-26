@@ -50,6 +50,7 @@ function loadWorkouts(arg) {
             button.onclick = function () {
                 //are you sure screen, if yes:
                 document.getElementById("deleteConfirmation").hidden = false
+                document.getElementById("workoutBeingDeleted").innerHTML = "\"" + key + "\""
                 document.getElementById("deleteConfirmButton").onclick = function () {
                     document.getElementById("deleteConfirmation").hidden = true
                     removeWorkout(key)

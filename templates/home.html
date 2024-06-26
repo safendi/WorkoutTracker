@@ -17,14 +17,11 @@
                 font-family: "Arial Rounded MT Bold";
             }
             button{
-                border-style: ridge;
-                border-width: 5px;
+                border-style: solid;
+                border-width: 3px;
                 border-radius: 10px;
             }
             table{
-                border-style: solid;
-                border-width: 5px;
-                border-radius: 10px;
                 margin-right: auto;
                 margin-left: auto;
             }
@@ -41,6 +38,14 @@
                 border-style: outset;
                 border-width: 10px;
                 border-color: mediumpurple;
+                border-radius: 20px;
+            }
+            #deleteConfirmation {
+                border-radius: 20px;
+                border-style: solid;
+                border-width: 5px;
+                padding: 20px;
+                background-color: gray;
             }
 
         </style>
@@ -105,8 +110,9 @@
             <div id="currentWorkoutsList" hidden="true">
                 <p id="noWorkoutsCurrently" hidden="true">You currently have no workouts</p>
                 <table id="currentWorkoutsListTable"></table>
+                <br><br>
                 <div id="deleteConfirmation" hidden="true">
-                    <p>Are you Sure You want to Delete ___?</p>
+                    <p>Are you sure you want to delete <span id="workoutBeingDeleted"></span>?</p>
                     <button id="deleteConfirmButton">Delete</button>
                     <button onclick="document.getElementById('deleteConfirmation').hidden = true">Cancel</button>
                 </div>
