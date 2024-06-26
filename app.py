@@ -156,6 +156,7 @@ def removeWo():
 def workoutSelected():
     if request.method == 'POST':
         data = request.get_json()
+        currWo = data
         session['currentWorkout'] = data
         print(session['currentWorkout'])
         return session['currentWorkout']
@@ -170,7 +171,7 @@ def workoutSelected():
             retData[currentWorkout] = data
             return json.dumps(retData)
         else:
-            return "None"
+            return session['usr'] + ": " + session['currentWorkout']
 
 
 
