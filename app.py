@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, redirect, session
+from flask_cors import CORS
 import sqlite3
 import json
 
 app = Flask(__name__)
+CORS(app)
 
 app.secret_key = "sheffg"
 #app.permanent_session_lifetime = True

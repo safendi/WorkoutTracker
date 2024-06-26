@@ -1,24 +1,30 @@
 
 function loadPage() {
-
+    console.log("loadPage called");
     $.ajax({
-                url: '/workoutSelected',
-                type: 'GET',
-                contentType: 'application/json',
-                success: function(response) {
-                    if (response == "None") {
-                        console.log("No Workout Selected")
-                    } else {
-                        res = JSON.parse(response)
-                        console.log(res)
-                        loadWorkout(res)
-                    }
-                },
-                error: function(error) {
-                    console.log(error);
+        url: '/workoutSelected',
+        type: 'GET',
+        contentType: 'application/json',
+        success: function(response) {
+            console.log("AJAX success:", response);
+            if (response == "None") {
+                console.log("No Workout Selected");
+            } else {
+                try {
+                    let res = JSON.parse(response);
+                    console.log("Parsed response:", res);
+                    loadWorkout(res);
+                } catch (e) {
+                    console.error("Failed to parse JSON response:", e);
                 }
-            });
+            }
+        },
+        error: function(error) {
+            console.log("AJAX error:", error);
+        }
+    });
 }
+
 
 let updatedWorkout = {}
 
