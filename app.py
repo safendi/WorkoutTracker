@@ -9,10 +9,6 @@ CORS(app)
 app.secret_key = "sheffg"
 #app.permanent_session_lifetime = True
 
-app.config.update(
-    SESSION_COOKIE_SAMESITE="Lax",
-    SESSION_COOKIE_SECURE=True,
-)
 
 
 conn = sqlite3.connect("users.db", check_same_thread=False)

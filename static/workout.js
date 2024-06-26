@@ -1,33 +1,4 @@
 
-function loadWoSelection(arg) {
-    let box = document.getElementById("listofWo")
-    box.innerHTML = ""
-    for (let key in arg) {
-        console.log(key)
-        let div = document.createElement("div")
-        let name = document.createElement("h3")
-        name.innerHTML = key
-        div.appendChild(name)
-        let listOfEx = document.createElement("p")
-        for (let ex of Object.keys(arg[key])) {
-            listOfEx.innerHTML += ex + " (x" + arg[key][ex][0] + ")" + ", "
-        }
-        listOfEx.innerHTML = listOfEx.innerHTML.substring(0, listOfEx.innerHTML.length - 2)
-        listOfEx.style.fontStyle = "italic"
-        listOfEx.className = "listOfEx"
-        div.appendChild(listOfEx)
-        let button = document.createElement("button")
-        button.innerHTML = "Start"
-        button.onclick = function() {
-            document.getElementById("noWoFound").hidden = true
-            let data = {}
-            data[key] = arg[key]
-            loadWorkout(data)
-        }
-        div.appendChild(button)
-        box.appendChild(div)
-    }
-}
 
 function loadPage() {
     console.log("loadPage called");
@@ -37,26 +8,8 @@ function loadPage() {
         contentType: 'application/json',
         success: function(response) {
             console.log("AJAX success:", response);
-
             if (response == "None") {
-                document.getElementById("noWoFound").hidden = false
-                $.ajax({
-                url: '/list',
-                type: 'GET',
-                contentType: 'application/json',
-                success: function(response) {
-                    if (response == "None") {
-                        console.log("none found")
-                    } else {
-                        res = JSON.parse(response)
-                        loadWoSelection(res)
-                    }
-                },
-                error: function(error) {
-                    console.log(error);
-                }
-            });
-
+                window.location.href = '/home'
             } else {
                 try {
                     let res = JSON.parse(response);
@@ -163,7 +116,6 @@ function loadWorkout(wo) {
 
 function completeWorkout() {
     updateList(updatedWorkout)
-    window.location.href = '/home'
 }
 
 function quitWorkout() {
@@ -177,7 +129,16 @@ function updateList(list) {
                 contentType: 'application/json',
                 data: JSON.stringify(list),
                 success: function(response) {
-                    console.log(response)
+                    res = JSON.parse(response)
+                    let data = res[Object.keys(list)[0]]
+                    let retData = JSON.stringify(data)
+                    let updData = JSON.stringify(list[Object.keys(list)[0]])
+                    if (retData == updData) {
+                        window.location.href = '/home'
+                    }
+                    else {
+                        completeWorkout()
+                    }
                 },
                 error: function(error) {
                     console.log(error);
