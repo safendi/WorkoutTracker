@@ -74,13 +74,15 @@ function loadWorkout(wo) {
             row.insertCell(2).appendChild(weightInput)
             row.insertCell(3).appendChild(repsInput)
             let submitButton = document.createElement("button")
-            submitButton.innerHTML = "Finish Set"
+            submitButton.innerHTML = "Done"
+            submitButton.style.backgroundColor = "darkseagreen"
             submitButton.onclick = function () {
                 if (row.style.background == "green") {
                     updatedWorkout[workout][exercise.innerHTML][i] = ogWo[workout][exercise.innerHTML][i]
                     updatedWorkout[workout][exercise.innerHTML][i+1] = ogWo[workout][exercise.innerHTML][i+1]
                     row.style.background = "none"
-                    submitButton.innerHTML = "Finish Set"
+                    submitButton.style.backgroundColor = "darkseagreen"
+                    submitButton.innerHTML = "Done"
                 } else {
                     if (weightInput.value == "") {
                         weightInput.value = exerciseData[i]
@@ -97,6 +99,7 @@ function loadWorkout(wo) {
                     workoutData[exercise.innerHTML][i + 1] = parseInt(repsInput.value)
                     updatedWorkout = data
                     row.style.background = "green"
+                    submitButton.style.backgroundColor = "indianred"
                     submitButton.innerHTML = "Undo"
                 }
             }
