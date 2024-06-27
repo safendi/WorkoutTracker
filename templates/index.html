@@ -7,57 +7,84 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
+        <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <style>
             body{
-                background-color: lightslategray;
-                margin: 0px;
+                background: linear-gradient(to top, #484647 0%, #666699 100%);                margin: 0px;
+                height: 100vh;
             }
 
             #loginPanel{
                 border-style: solid;
                 border-radius: 20px;
                 padding: 40px;
-                border-width: 10px;
-                width: 300px;
+                border-width: 1px;
+                width: 350px;
                 margin-left: auto;
                 margin-right: auto;
-
-                background-color: darkgray;
-                border-color: black;
+                background: transparent;
+                backdrop-filter: blur(100%);
+                border-color: white;
                 font-family: "Arial Rounded MT Bold", sans-serif;
                 text-align: center;
+                box-shadow: 0 0 10px rgba(0, 0, 0, .2);
             }
 
             #loginButton{
-                font-size: 25px;
-                font-family: Chalkboard, sans-serif;
-                background-color: lightslategray;
+                font-family: sans-serif;
+                background-color: transparent;
                 border-style: solid;
                 border-radius: 20px;
                 padding: 8px;
-                border-color: black;
-                border-width: 2px;
+                border-width: 1px;
+                border-color: whitesmoke;
+                width: 200px;
+                background: linear-gradient(to right, #ccccff 0%, #666699 100%);
+                font-size: 18px;
             }
 
             #loginText{
-                font-family: "Arial Rounded MT Bold", sans-serif;
-                font-size: 60px;
+                font-family: sans-serif;
+                font-size: 50px;
                 text-align: center;
+                color: whitesmoke;
+                border-bottom-style: solid;
+                border-bottom-: 1px;
+                padding: 18px;
+                width: 150px;
+                margin-left: auto;
+                margin-right: auto;
             }
 
-            #loginLabel{
-                font-size: 25px;
-            }
             
             .textbox{
-                font-size: 18px;
-                border-radius: 15px;
+                font-size: 15px;
+                border-radius: 10px;
                 border-style: solid;
-                border-width: 5px;
+                border-width: 1px;
                 padding: 5px;
-                text-transform: lowercase;
+                border-color: whitesmoke;
+                background-color: transparent;
+                width: 200px;
+                font-family: "Arial Rounded MT Bold";
+                color: cornflowerblue;
+            }
+            ::placeholder {
+                    color: cornflowerblue;
+                    font-family: "Arial Rounded MT Bold";
+                }
+            box-icon {
+                position: absolute;
+                transform: translate(-30px, 4.5px);
+                block-size: 18px;
+            }
+            h3 {
+                margin-top: auto;
+                font-family: sans-serif;
+                font-size: 28px;
+                text-align: center;
             }
 
         </style>
@@ -65,19 +92,19 @@
     </head>
 
     <body>
-
     <h1 id="loginText">Log in</h1>
     <br> <br>
     <div id="loginPanel">
         <form action="/" method="post">
             <label id="loginLabel">
-                Username:
+                <h3>Sign in to your Account</h3>
                 <br>
-                <input type="text" name="username" id="username" class="textbox">
+                <input type="text" name="username" id="username" class="textbox" placeholder="Username">
+                <box-icon name='user' color='#6495ed' ></box-icon>
                 <br> <br>
-                Password:
+                <input type="password" name="password" id="password" class="textbox" placeholder="Password">
+                <box-icon name='lock-open-alt' color="#6495ed"></box-icon>
                 <br>
-                <input type="password" name="password" id="password" class="textbox">
                 <br> <br>
                 <input type="submit" id="loginButton" value="Login">
             </label>
@@ -85,7 +112,7 @@
         </form>
         <br>
         <p>Don't have an account?</p>
-        <a href="register">Register</a>
+        <a href="register" style="color: cornflowerblue">Register</a>
     </div>
 
     </body>
