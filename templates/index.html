@@ -14,11 +14,6 @@
             body{
                 background: linear-gradient(to top, #484647 0%, #666699 100%);                margin: 0px;
                 height: 100vh;
-                background-image: url("../static/img/Desktop - 1.png");
-                background-size: cover; /* This will make the background cover the entire screen */
-                background-repeat: no-repeat; /* Prevents the image from repeating */
-                background-attachment: fixed; /* Makes the background fixed in place */
-                background-position: center; /* Centers the background image */
             }
 
             #loginPanel{
@@ -29,8 +24,8 @@
                 width: 350px;
                 margin-left: auto;
                 margin-right: auto;
-                background: rgba(255, 255, 255, 0.1);
-                backdrop-filter: blur(10px);
+                background: rgba(0, 0, 0, 0.3);
+                backdrop-filter: blur(50%);
                 border-color: white;
                 font-family: "Arial Rounded MT Bold", sans-serif;
                 text-align: center;
@@ -48,6 +43,10 @@
                 width: 200px;
                 background: linear-gradient(to right, #ccccff 0%, #666699 100%);
                 font-size: 18px;
+            }
+            #loginButton:hover {
+                background: transparent; /* Change background to transparent on hover */
+                color: whitesmoke;
             }
 
             #loginText{
@@ -82,6 +81,12 @@
                 transform: translate(-30px, 7.5px);
                 block-size: 18px;
             }
+            .textbox:focus + box-icon {
+                block-size: 21px;
+            }
+            .textbox:focus::placeholder {
+                visibility: hidden;
+            }
             h2 {
                 margin-top: auto;
                 font-family: sans-serif;
@@ -93,13 +98,16 @@
                 width: 150px;
                 padding: 15px;
             }
+            a {
+                color: #666699;
+            }
 
         </style>
 
     </head>
 
     <body>
-    <h1 id="loginText">Your Fitness Journey Begins Here!</h1>
+    <h1 id="loginText">Welcome Back!</h1>
     <br> <br>
     <div id="loginPanel">
         <form action="/" method="post">
