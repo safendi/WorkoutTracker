@@ -58,15 +58,16 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        confirmPassword = request.form['confirmPassword']
         cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
         keypass = cursor.fetchone()
-        if keypass is None:
+        if keypass is None and password == confirmPassword and len(password) >= 3:
             cursor.execute("INSERT INTO users VALUES (?, ?)", (username, password))
             conn.commit()
             session['usr'] = username
             return redirect("/home")
         else:
-            print("User already exists")
+            print("User already exists or failed to confirm password")
             return redirect("/register")
 
     else:

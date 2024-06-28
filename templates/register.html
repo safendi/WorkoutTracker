@@ -4,23 +4,100 @@
 
     <head>
         <title>Workout Log</title>
-         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
         <style>
             body{
+                background: linear-gradient(to top, #484647 0%, #666699 100%);                margin: 0px;
+                height: 100vh;
+            }
+
+            #registerLabel{
+                border-style: solid;
+                border-radius: 20px;
+                padding: 40px;
+                border-width: 1px;
+                width: 350px;
+                margin-left: auto;
+                margin-right: auto;
+                background: rgba(0, 0, 0, 0.3);
+                backdrop-filter: blur(50%);
+                border-color: white;
+                font-family: "Arial Rounded MT Bold", sans-serif;
                 text-align: center;
+                box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+            }
+
+            #registerButton{
+                font-family: sans-serif;
+                background-color: transparent;
+                border-style: solid;
+                border-radius: 20px;
+                padding: 8px;
+                border-width: 1px;
+                border-color: whitesmoke;
+                width: 200px;
+                background: linear-gradient(to right, #ccccff 0%, #666699 100%);
+                font-size: 18px;
+            }
+            #registerButton:hover {
+                background: transparent; /* Change background to transparent on hover */
+                color: whitesmoke;
+            }
+
+            h1{
+                font-family: sans-serif;
+                font-size: 40px;
+                text-align: center;
+                color: whitesmoke;
+                padding: 18px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+
+            .textbox{
+                font-size: 15px;
+                border-radius: 20px;
+                border-style: solid;
+                border-width: 1px;
+                padding: 8px;
+                border-color: whitesmoke;
+                background-color: transparent;
+                width: 200px;
                 font-family: "Arial Rounded MT Bold";
-                background-color: lightslategray;
+                color: cornflowerblue;
             }
-            .textbox {
-                border-style: solid;
-                border-radius: 10px;
-                padding: 5px;
+            ::placeholder {
+                    color: cornflowerblue;
+                    font-family: "Arial Rounded MT Bold";
+                }
+            box-icon {
+                position: absolute;
+                transform: translate(-30px, 7.5px);
+                block-size: 18px;
             }
-            .button {
-                border-style: solid;
-                border-radius: 10px;
-                border-width: 3px;
-                border-color: black;
+            .textbox:focus + box-icon {
+                block-size: 21px;
+            }
+            .textbox:focus::placeholder {
+                visibility: hidden;
+            }
+            h2 {
+                margin-top: auto;
+                font-family: sans-serif;
+                font-size: 40px;
+                margin-left: auto;
+                margin-right: auto;
+                color: black;
+                border-bottom-style: solid;
+                width: 150px;
+                padding: 15px;
+            }
+            a {
+                color: #666699;
+                position: relative;
+                top: 3px;
             }
 
         </style>
@@ -28,25 +105,30 @@
 
 
     <body>
+    <h1>Create an Account!</h1>
 
-    <h1>Register</h1>
-    <br> <br>
+    <div id="registerLabel">
+        <h2>Register</h2>
+        <form action="/register" method="post">
+            <label>
+                <input type="text" name="username" id="username" class="textbox" placeholder="Username">
+                <box-icon name='user' color='#6495ed' ></box-icon>
+                <br> <br>
+                <input type="password" name="password" id="password" class="textbox" placeholder="Password">
+                <box-icon name='lock-open-alt' color="#6495ed"></box-icon>
+                <br> <br>
+                <input type="password" name="confirmPassword" id="confirmPassword" class="textbox" placeholder="Confirm Password">
+                <box-icon name='lock-open' color="#6495ed"></box-icon>
+                <br> <br><br>
+                <input type="submit" value="Create Account" class="button" id="registerButton">
+            </label>
+        </form>
+        <br><br>
+        <div>Already have an account?</div>
+        <a href="/">Login</a>
+    </div>
 
-    <form action="/register" method="post">
-        <label>
-            Username:
-            <input type="text" name="username" id="username" class="textbox">
-            <br> <br>
-            Password:
-            <input type="password" name="password" id="password" class="textbox">
-            <br> <br>
-            <input type="submit" value="Create Account" class="button">
-        </label>
-    </form>
 
-    <br><br><br>
-    <div>Already have an account?</div>
-    <a href="/">Login</a>
 
     </body>
 
