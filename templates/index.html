@@ -14,6 +14,11 @@
             body{
                 background: linear-gradient(to top, #484647 0%, #666699 100%);                margin: 0px;
                 height: 100vh;
+                background-image: url("../static/img/Desktop - 1.png");
+                background-size: cover; /* This will make the background cover the entire screen */
+                background-repeat: no-repeat; /* Prevents the image from repeating */
+                background-attachment: fixed; /* Makes the background fixed in place */
+                background-position: center; /* Centers the background image */
             }
 
             #loginPanel{
@@ -24,8 +29,8 @@
                 width: 350px;
                 margin-left: auto;
                 margin-right: auto;
-                background: transparent;
-                backdrop-filter: blur(100%);
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
                 border-color: white;
                 font-family: "Arial Rounded MT Bold", sans-serif;
                 text-align: center;
@@ -47,13 +52,10 @@
 
             #loginText{
                 font-family: sans-serif;
-                font-size: 50px;
+                font-size: 40px;
                 text-align: center;
                 color: whitesmoke;
-                border-bottom-style: solid;
-                border-bottom-: 1px;
                 padding: 18px;
-                width: 150px;
                 margin-left: auto;
                 margin-right: auto;
             }
@@ -61,10 +63,10 @@
             
             .textbox{
                 font-size: 15px;
-                border-radius: 10px;
+                border-radius: 20px;
                 border-style: solid;
                 border-width: 1px;
-                padding: 5px;
+                padding: 8px;
                 border-color: whitesmoke;
                 background-color: transparent;
                 width: 200px;
@@ -77,14 +79,19 @@
                 }
             box-icon {
                 position: absolute;
-                transform: translate(-30px, 4.5px);
+                transform: translate(-30px, 7.5px);
                 block-size: 18px;
             }
-            h3 {
+            h2 {
                 margin-top: auto;
                 font-family: sans-serif;
-                font-size: 28px;
-                text-align: center;
+                font-size: 40px;
+                margin-left: auto;
+                margin-right: auto;
+                color: black;
+                border-bottom-style: solid;
+                width: 150px;
+                padding: 15px;
             }
 
         </style>
@@ -92,12 +99,12 @@
     </head>
 
     <body>
-    <h1 id="loginText">Log in</h1>
+    <h1 id="loginText">Your Fitness Journey Begins Here!</h1>
     <br> <br>
     <div id="loginPanel">
         <form action="/" method="post">
             <label id="loginLabel">
-                <h3>Sign in to your Account</h3>
+                <h2>Log in</h2>
                 <br>
                 <input type="text" name="username" id="username" class="textbox" placeholder="Username">
                 <box-icon name='user' color='#6495ed' ></box-icon>
@@ -105,14 +112,15 @@
                 <input type="password" name="password" id="password" class="textbox" placeholder="Password">
                 <box-icon name='lock-open-alt' color="#6495ed"></box-icon>
                 <br>
-                <br> <br>
+                <a href="/register" style="position: relative; top: 5px; left: -40px; font-size: 13.5px">Forgot Password?</a>
+                <br> <br><br>
                 <input type="submit" id="loginButton" value="Login">
             </label>
             <br>
         </form>
         <br>
         <p>Don't have an account?</p>
-        <a href="register" style="color: cornflowerblue">Register</a>
+        <a href="register">Register</a>
     </div>
 
     </body>
