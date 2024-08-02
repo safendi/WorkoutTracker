@@ -21,6 +21,7 @@ function myWorkoutsClicked() {
 }
 
 function loadWorkouts(arg) {
+    document.getElementById("currentWorkoutsBox").hidden = true
     document.getElementById("deleteConfirmation").hidden = true
     let currentWorkoutList = document.getElementById("currentWorkoutsListTable")
     while (currentWorkoutList.rows.length != 0) {
@@ -106,6 +107,7 @@ function unhideWoNamer() {
     let namer = document.getElementById("workoutNamer")
     namer.hidden = false
     document.getElementById("currentWorkoutsList").hidden = true
+    document.getElementById("currentWorkoutsBox").hidden = true
 }
 
 
@@ -197,6 +199,12 @@ function pageLoaded() {
 }
 
 function loadCurrentWorkouts(arg) {
+    document.getElementById("currentWorkoutsBox").hidden = false
+    document.getElementById("workoutNamer").hidden = true
+    document.getElementById("workoutCreator").hidden = true
+    document.getElementById("currentWorkoutsList").hidden = true
+
+
     let box = document.getElementById("currentWorkouts")
     box.innerHTML = ""
     for (let key in arg) {

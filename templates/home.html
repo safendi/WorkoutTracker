@@ -5,6 +5,9 @@
     <head>
         <title>Workout Log</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Jura:wght@300..700&family=Sedgwick+Ave+Display&display=swap" rel="stylesheet">
         <script src="../static/home.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,8 +16,10 @@
             body{
                 text-align: center;
                 align-items: center;
-                background-color: lightslategray;
-                font-family: "Arial Rounded MT Bold";
+                background: #262424;
+                margin: 0px;
+                font-family: "sans-serif";
+                height: 100vh;
             }
             button{
                 border-style: solid;
@@ -25,27 +30,70 @@
                 margin-right: auto;
                 margin-left: auto;
             }
-            .listOfEx {
-                font-size: 12px;
-            }
-            .editCreateButtons {
-                font-size: 20px;
-                border-style: ridge;
-                border-width: 3px;
-                border-radius: 10px;
-            }
-            #editAndCreateBox {
-                border-style: outset;
-                border-width: 10px;
-                border-color: mediumpurple;
-                border-radius: 20px;
-            }
+
             #deleteConfirmation {
                 border-radius: 20px;
                 border-style: solid;
                 border-width: 5px;
                 padding: 20px;
                 background-color: gray;
+            }
+            h1 {
+                color: white;
+                font-family: 'Jura';
+            }
+            p{
+                color: white;
+                font-family: 'Jura';
+                text-align: center;
+
+            }
+
+            h2{
+                color: white;
+                font-family: 'Jura';
+                text-align: center;
+
+            }
+
+            h3{
+                color: white;
+                font-family: 'Jura';
+                text-align: center;
+            }
+            table{
+                color: white;
+                font-family: 'Jura';
+                text-align: center;
+            }
+            #goalsDiv {
+                background-color: #191818;
+                border-style: solid;
+                border-radius: 30px;
+                border-color: #514949;
+                width: 500px;
+                margin-left: 80px;
+                margin-right: 80px;
+                height: 400px;
+            }
+            .editCreateButtons {
+                position: relative;
+                background-color: #191818;
+                font-size: 25px;
+                font-family: "Jura";
+                color: white;
+                border-color: #484647;
+                padding: 10px 20px;
+                overflow: hidden;
+                z-index: 1;
+            }
+            #editAndCreateBox {
+                background-color: #191818;
+                border-color: #484647;
+                margin-right: 100px;
+                margin-left: 100px;
+                border-radius: 30px;
+                padding: 30px;
             }
 
         </style>
@@ -57,17 +105,33 @@
         <form action="/home" method="get">
             <h1> Hello, {{ usr }}!</h1>
         </form>
+        <hr style="width: 150px"><br><br>
+
+        <div style="display: flex; align-items: center; margin-right: 80px">
+
+            <div id="goalsDiv" style="flex: 1;">
+                <p style="font-size: 40px; margin-top: 10px;">Goals:</p>
+                <p id="listOfGoals">You Currently Have No Goals :(</p>
+            </div>
+
+            <img src="../static/img/Arm.png" style="flex: 1; max-width: 320px; height: 270px;">
+
+        </div>
+
+        <br><br>
+
+        <h1>Workouts:</h1>
         <div id="editAndCreateBox">
 
-            <br><br>
-            <input type="button" value="Edit Workouts" onclick="myWorkoutsClicked()" class="editCreateButtons">
-            <input type="button" id="createWorkout" value="Create New Workout" onclick="unhideWoNamer()" class="editCreateButtons">
+            <input type="button" value="Start" onclick="pageLoaded()" class="editCreateButtons">
+            <input type="button" value="Edit" onclick="myWorkoutsClicked()" class="editCreateButtons">
+            <input type="button" id="create" value="Create" onclick="unhideWoNamer()" class="editCreateButtons">
             <br><br><br>
 
 
             <div id="workoutNamer" hidden="true">
+                <p>What do you want to call this workout?</p>
                 <label>
-                    What do you want to call this workout?
                     <br>
                     <input type="text" id="woName">
                     <br>
@@ -117,16 +181,23 @@
                     <button onclick="document.getElementById('deleteConfirmation').hidden = true">Cancel</button>
                 </div>
             </div>
-            <br><br><br><br>
-        </div>
-        <br><br><br>
-        <div>
-            <h2 style="display: inline">Current Workouts</h2>
-            <button onclick="pageLoaded()" style="display: inline">Reload</button>
-            <br><br>
-            <div id="currentWorkouts">
+
+            <div id="currentWorkoutsBox">
+                <h2 style="display: inline">Current Workouts</h2>
+                <button onclick="pageLoaded()" style="display: inline">Reload</button>
+                <br><br>
+                <div id="currentWorkouts"></div>
             </div>
+
         </div>
+
+        <br><br><br>
+
+
+        <div id="aiChatBot" >
+            <button>AI</button>
+        </div>
+
         <br><br><br><br>
         <a href="/logout">Log Out</a>
 

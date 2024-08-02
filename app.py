@@ -26,7 +26,7 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS workouts (
 @app.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form['username']
+        username = request.form['username'].lower()
         password = request.form['password']
         cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
         keypass = cursor.fetchone()
@@ -56,7 +56,7 @@ def login():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        username = request.form['username']
+        username = request.form['username'].lower()
         password = request.form['password']
         confirmPassword = request.form['confirmPassword']
         cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
