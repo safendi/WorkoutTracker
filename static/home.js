@@ -239,6 +239,9 @@ function loadCurrentWorkouts(arg) {
         }
         div.appendChild(button)
         box.appendChild(div)
+        let line = document.createElement("hr")
+        line.style.width = "200px"
+        box.appendChild(line)
     }
 }
 
