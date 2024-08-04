@@ -23,6 +23,14 @@ function myWorkoutsClicked() {
 function loadWorkouts(arg) {
     document.getElementById("currentWorkoutsBox").hidden = true
     document.getElementById("deleteConfirmation").hidden = true
+
+    let startButton = document.getElementById("startButton")
+    startButton.style.borderColor = "white"
+    let editButton = document.getElementById("editButton")
+    editButton.style.borderColor = "blue"
+    let createButton = document.getElementById("createButton")
+    createButton.style.borderColor = "white"
+
     let currentWorkoutList = document.getElementById("currentWorkoutsListTable")
     while (currentWorkoutList.rows.length != 0) {
         currentWorkoutList.deleteRow(0)
@@ -108,6 +116,13 @@ function unhideWoNamer() {
     namer.hidden = false
     document.getElementById("currentWorkoutsList").hidden = true
     document.getElementById("currentWorkoutsBox").hidden = true
+
+    let startButton = document.getElementById("startButton")
+    startButton.style.borderColor = "white"
+    let editButton = document.getElementById("editButton")
+    editButton.style.borderColor = "white"
+    let createButton = document.getElementById("createButton")
+    createButton.style.borderColor = "blue"
 }
 
 
@@ -203,7 +218,12 @@ function loadCurrentWorkouts(arg) {
     document.getElementById("workoutNamer").hidden = true
     document.getElementById("workoutCreator").hidden = true
     document.getElementById("currentWorkoutsList").hidden = true
-
+    let startButton = document.getElementById("startButton")
+    startButton.style.borderColor = "blue"
+    let editButton = document.getElementById("editButton")
+    editButton.style.borderColor = "white"
+    let createButton = document.getElementById("createButton")
+    createButton.style.borderColor = "white"
 
     let box = document.getElementById("currentWorkouts")
     box.innerHTML = ""

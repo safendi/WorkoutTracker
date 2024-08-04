@@ -18,7 +18,7 @@
                 align-items: center;
                 background: #262424;
                 margin: 0px;
-                font-family: "sans-serif";
+                font-family: "Jura";
                 height: 100vh;
             }
             button{
@@ -102,6 +102,10 @@
                 font-family: "Jura";
                 font-size: 25px;
             }
+            .editCreateButtons:hover {
+                background-color: white;
+                color: black;
+            }
 
             button {
                 background-color: #191818;
@@ -111,15 +115,21 @@
                 border: white solid 1px;
                 background-color: black;
                 font-size: 15px;
+                border-radius: 0px;
+            }
+            button:hover {
+                color: black;
+                background-color: white;
             }
 
             #woName {
                 color: white;
                 background-color: #191818;
                 border: white 1px solid;
-                padding: 2px;
+                padding: 4px;
                 font-family: "Jura";
             }
+
             #exName{
                 color: white;
                 background-color: #191818;
@@ -144,7 +154,12 @@
 
             <div id="goalsDiv" style="flex: 1;">
                 <p style="font-size: 40px; margin-top: 10px;">Goals:</p>
-                <p id="listOfGoals">You Currently Have No Goals :(</p>
+                <div id="goalsList">
+                    <p id="listOfGoals">You Currently Have No Goals :(</p>
+                </div>
+                <br><br>
+                <button>Add a Goal</button>
+
             </div>
 
             <img src="../static/img/Arm.png" style="flex: 1; max-width: 320px; height: 270px;">
@@ -157,9 +172,9 @@
         <div id="editAndCreateBox">
 
             <div id="editAndCreateButtons">
-                <input type="button" value="Start" onclick="pageLoaded()" class="editCreateButtons">
-                <input type="button" value="Edit" onclick="myWorkoutsClicked()" class="editCreateButtons">
-                <input type="button" id="create" value="Create" onclick="unhideWoNamer()" class="editCreateButtons">
+                <input type="button" id="startButton" value="Start" onclick="pageLoaded()" class="editCreateButtons">
+                <input type="button" id="editButton" value="Edit" onclick="myWorkoutsClicked()" class="editCreateButtons">
+                <input type="button" id="createButton" value="Create" onclick="unhideWoNamer()" class="editCreateButtons">
             </div>
             <br><br>
             <div id="workoutNamer" hidden="true">
