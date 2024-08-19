@@ -2,13 +2,38 @@ from flask import Flask, render_template, request, redirect, session
 from flask_cors import CORS
 import sqlite3
 import json
+import os
+import openai
+from openai import OpenAI
+
+
+
+
+#openai.api_key = "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"
+
+client = OpenAI(api_key='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')
+
+completion = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {
+            "role": "user",
+            "content": "talk about skibidi toilet."
+        }
+    ],
+    max_tokens=1
+)
+
+
+print(completion.choices[0].message.content)
+
 
 app = Flask(__name__)
 CORS(app)
 
 app.secret_key = "sheffg"
 #app.permanent_session_lifetime = True
-
 
 
 conn = sqlite3.connect("users.db", check_same_thread=False)
@@ -173,6 +198,25 @@ def workoutSelected():
 @app.route('/workout')
 def workout():
     return render_template('workout.html')
+
+@app.route('/aiChatBot', methods=['POST'])
+def aiChatBot():
+    if request.method == 'POST':
+        data = request.get_json()
+        print(data)
+        completion = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {"role": "system", "content": "You are a helpful fitness / gym-related assistant."},
+                {
+                    "role": "user",
+                    "content": data
+                }
+            ],
+            max_tokens=100
+        )
+
+        return json.dumps(completion.choices[0].message.content)
 
 
 if __name__ == '__main__':

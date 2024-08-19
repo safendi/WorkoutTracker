@@ -4,6 +4,7 @@
 
     <head>
         <title>Workout Log</title>
+        <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -138,6 +139,37 @@
                 font-family: "Jura";
             }
 
+            #aiChatBot {
+                padding: 5px;
+                width: 220px;
+                height: 300px;
+                background-color: #514949;
+                align-items: center;
+                right: 2%;
+                bottom: 3%;
+                box-shadow: 5px 5px black;
+                position: fixed;
+            }
+
+            box-icon {
+                background-color: cornflowerblue;
+                border-radius: 30px;
+                padding: 4px;
+                width: 50px;
+                height: 50px;
+                right: 4%;
+                bottom: 5%;
+                position: fixed;
+            }
+            box-icon:hover {
+                background-color: white;
+            }
+
+            #chatBotXButton {
+                color: darkred;
+                margin-left: 90%;
+            }
+
 
         </style>
     </head>
@@ -155,7 +187,7 @@
             <div id="goalsDiv" style="flex: 1;">
                 <p style="font-size: 40px; margin-top: 10px;">Goals:</p>
                 <div id="goalsList">
-                    <p id="listOfGoals">You Currently Have No Goals :(</p>
+                    <p id="listOfGoals">Coming Soon!</p>
                 </div>
                 <br><br>
                 <button>Add a Goal</button>
@@ -193,11 +225,11 @@
                 <h3 id="woNameLabel"></h3>
                 <br>
                 <label>
-                    Exercise:
+                    <p>Exercise:</p>
                     <input type="text" id="exName">
                     <br>
-                    Sets:
-                    <input type="number" id="setsNum">
+                    <p>Sets:</p>
+                    <input type="number" id="setsNum" style="background-color: #191818; color: white; font-family: Jura; border: white 1px solid">
                     <br> <br>
                     <input type="button" onclick="addEx()" value="Add">
                 </label>
@@ -241,9 +273,18 @@
 
         <br><br><br>
 
+        <div id="chatBotButton" onclick="unhideChatBot()">
+           <box-icon name='bot'></box-icon>
+        </div>
 
-        <div id="aiChatBot" >
-            <button>AI</button>
+
+        <div id="aiChatBot" hidden="true">
+            <button id="chatBotXButton" onclick="exitChatBot()">X</button>
+            <h3>Ask AI</h3>
+            <input type="text" id="aiPrompt" style="background-color: #191818; color: white; padding: 1px; font-size: 16px">
+            <br><br>
+            <button onclick="aiChatClicked()">Chat</button>
+            <p id="aiChatBotResponse"></p>
         </div>
 
         <br><br><br><br>

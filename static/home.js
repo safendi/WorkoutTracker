@@ -265,4 +265,32 @@ function loadCurrentWorkouts(arg) {
     }
 }
 
+function aiChatClicked() {
+    let prompt = document.getElementById("aiPrompt").value
+    $.ajax({
+                url: '/aiChatBot',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(prompt),
+                success: function(response) {
+                    response = JSON.parse(response)
+                    console.log(response)
+                    document.getElementById("aiChatBotResponse").innerHTML = response
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+}
+
+function unhideChatBot() {
+    document.getElementById("aiChatBot").hidden = false
+    document.getElementsByTagName("box-icon").hidden = true
+}
+
+function exitChatBot() {
+    document.getElementById("aiChatBot").hidden = true
+    document.getElementsByTagName("box-icon").hidden = false
+
+}
 
