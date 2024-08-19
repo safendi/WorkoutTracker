@@ -7,35 +7,20 @@ import openai
 from openai import OpenAI
 
 
+#AI API STUFF
+openAIKey = os.getenv('OPENAI_API_KEY')
+client = OpenAI(api_key=openAIKey)
 
 
-#openai.api_key = "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"
-
-client = OpenAI(api_key='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')
-
-completion = client.chat.completions.create(
-    model="gpt-4o-mini",
-    messages=[
-        {"role": "system", "content": "You are a helpful assistant."},
-        {
-            "role": "user",
-            "content": "talk about skibidi toilet."
-        }
-    ],
-    max_tokens=1
-)
-
-
-print(completion.choices[0].message.content)
-
-
+#FLASK SERVERSIDE
 app = Flask(__name__)
 CORS(app)
-
 app.secret_key = "sheffg"
+
 #app.permanent_session_lifetime = True
 
 
+#Database setup
 conn = sqlite3.connect("users.db", check_same_thread=False)
 cursor = conn.cursor()
 cursor.execute("""CREATE TABLE IF NOT EXISTS users (
@@ -47,7 +32,7 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS workouts (
                     workouts text)""")
 
 
-
+#Rest API
 @app.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
