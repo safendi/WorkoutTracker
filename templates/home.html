@@ -138,7 +138,7 @@
             }
 
             #aiChatBot {
-                padding: 5px;
+                padding: 15px;
                 width: 220px;
                 height: 300px;
                 background-color: #514949;
@@ -147,6 +147,7 @@
                 bottom: 3%;
                 box-shadow: 5px 5px black;
                 position: fixed;
+                overflow-y: scroll;
             }
 
             box-icon {
@@ -279,10 +280,10 @@
         <div id="aiChatBot" hidden="true">
             <button id="chatBotXButton" onclick="exitChatBot()">X</button>
             <h3>Ask AI</h3>
-            <input type="text" id="aiPrompt" style="background-color: #191818; color: white; padding: 1px; font-size: 16px">
+            <input type="text" id="aiPrompt" style="background-color: #191818; color: white; padding: 1px; font-size: 16px; border: white solid 1px; font-family: Jura">
             <br><br>
             <button onclick="aiChatClicked()">Chat</button>
-            <p id="aiChatBotResponse"></p>
+            <p id="aiChatBotResponse">OckBot:  Yo! My name is OckBot.  Ask me bout' gettin' gains!</p>
         </div>
 
         <br><br><br><br>

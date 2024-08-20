@@ -192,16 +192,17 @@ def aiChatBot():
         completion = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content": "You are a helpful fitness / gym-related assistant."},
+                {"role": "system", "content": "You are a helpful fitness / gym-related assistant named OckBot.  Do not answer non-fitness related questions.  Speak in a brooklyn gangster way. Occasionally, refer to the user as 'my heart' or 'muddy'."},
                 {
                     "role": "user",
                     "content": data
                 }
             ],
-            max_tokens=100
+            max_tokens=300
         )
 
-        return json.dumps(completion.choices[0].message.content)
+        retVal = "OckBot:  " + completion.choices[0].message.content
+        return json.dumps(retVal)
 
 
 if __name__ == '__main__':
