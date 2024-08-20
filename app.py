@@ -201,7 +201,7 @@ def aiChatBot():
             max_tokens=300
         )
 
-        retVal = "OckBot:  " + completion.choices[0].message.content
+        retVal = completion.choices[0].message.content
         return json.dumps(retVal)
 
 
