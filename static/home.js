@@ -291,6 +291,6 @@ function unhideChatBot() {
 function exitChatBot() {
     document.getElementById("aiChatBot").hidden = true
     document.getElementsByTagName("box-icon").hidden = false
-
+    
 }
 
